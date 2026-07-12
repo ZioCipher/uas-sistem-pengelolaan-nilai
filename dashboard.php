@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php include "koneksi.php"; ?>
+<!DOCTYPE html> 
 <html lang="id">
 <head>
     <meta charset="UTF-8">
