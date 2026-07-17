@@ -145,74 +145,32 @@ include "koneksi.php"; ?>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>230101001</td>
-                                    <td>Ahmad Zikri</td>
-                                    <td>Pemrograman Web</td>
-                                    <td>90</td>
-                                    <td>85</td>
-                                    <td>88</td>
-                                    <td>87.50</td>
-                                    <td><span class="badge badge-soft-success">A</span></td>
-                                    <td><span class="badge badge-soft-success">Lulus</span></td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>230101002</td>
-                                    <td>Siti Rahmah</td>
-                                    <td>Pemrograman Web</td>
-                                    <td>82</td>
-                                    <td>80</td>
-                                    <td>85</td>
-                                    <td>82.90</td>
-                                    <td><span class="badge badge-soft-primary">A-</span></td>
-                                    <td><span class="badge badge-soft-success">Lulus</span></td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>230101003</td>
-                                    <td>Muhammad Fajri</td>
-                                    <td>Pemrograman Web</td>
-                                    <td>70</td>
-                                    <td>68</td>
-                                    <td>75</td>
-                                    <td>71.90</td>
-                                    <td><span class="badge badge-soft-warning">B</span></td>
-                                    <td><span class="badge badge-soft-success">Lulus</span></td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>230101004</td>
-                                    <td>Nur Aulia</td>
-                                    <td>Pemrograman Web</td>
-                                    <td>45</td>
-                                    <td>50</td>
-                                    <td>48</td>
-                                    <td>48.00</td>
-                                    <td><span class="badge badge-soft-danger">E</span></td>
-                                    <td><span class="badge badge-soft-danger">Tidak Lulus</span></td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                    </td>
-                                </tr>
-                            </tbody>
+    <?php
+    $no = 1;
+    // Mengambil data dari view yang sudah dibuat di database[cite: 3]
+    $query = mysqli_query($koneksi, "SELECT * FROM view_nilai_lengkap"); 
+    while ($d = mysqli_fetch_array($query)) {
+    ?>
+        <tr>
+            <td><?= $no++; ?></td>
+            <td><?= $d['nim']; ?></td>
+            <td><?= $d['nama_mahasiswa']; ?></td>
+            <td><?= $d['nama_mk']; ?></td>
+            <td><?= $d['nilai_tugas']; ?></td>
+            <td><?= $d['nilai_uts']; ?></td>
+            <td><?= $d['nilai_uas']; ?></td>
+            <td><?= $d['nilai_akhir']; ?></td>
+            <td><span class="badge badge-soft-primary"><?= $d['grade']; ?></span></td>
+            <td><span class="badge badge-soft-success"><?= $d['status_kelulusan']; ?></span></td>
+            <td>
+<td>
+    <a href="edit_nilai.php?id=<?= $d['id_nilai']; ?>" class="btn btn-sm btn-warning">Edit</a>
+    <a href="hapus_nilai.php?id=<?= $d['id_nilai']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</a>
+</td>
+            </td>
+        </tr>
+    <?php } ?>
+</tbody>
                         </table>
                     </div>
 
